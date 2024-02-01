@@ -1,0 +1,11 @@
+version: '3'
+
+services: 
+  api-solid-pg:
+    image: bitnami/postgresql
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRESQL_USERNAME=fullstack-barber
+      - POSTGRESQL_PASSWORD=fullstack-barber
+      - POSTGRESQL_DATABASE=fullstack-barber-db
