@@ -6,6 +6,7 @@ import { Button } from "./ui/button";
 import { MenuIcon } from "lucide-react";
 import { signIn } from "next-auth/react";
 
+
 const Header = () => {
   const handleLoginClick = async () => {
     await signIn();
