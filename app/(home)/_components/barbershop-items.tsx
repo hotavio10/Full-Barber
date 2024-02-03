@@ -1,4 +1,4 @@
-"use client";
+"use client"
 
 
 import { Badge } from "@/app/_components/ui/badge";
