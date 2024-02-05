@@ -21,11 +21,13 @@ const Header = () => {
   return (
     <Card>
       <CardContent className="p-5 justify-between items-center flex flex-row">
-        <Image src="/logo.png" alt="Full Barber" height={18} width={120} />
+        <Link href="/">
+          <Image src="/logo.png" alt="Full Barber" height={18} width={120} />
+        </Link>
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" >
-              <MenuIcon size={16} />
+              <MenuIcon size={160}  />
             </Button>
           </SheetTrigger>
 
@@ -65,21 +67,21 @@ const Header = () => {
 
             <div className="flex flex-col gap-3 px-5">
               <Button variant="outline" className="justify-start" asChild>
-              <Link href="/">
-                <HomeIcon size={18} className="mr-2" />
-                Início
-              </Link>
+                <Link href="/">
+                  <HomeIcon size={18} className="mr-2" />
+                  Início
+                </Link>
               </Button>
 
               {data?.user && (
                 <Button variant="outline" className="justify-start" asChild>
-                <Link href="/bookings">
-                  <CalendarIcon size={18} className="mr-2" />
-                  Agendamentos
-              </Link>
-              </Button>
+                  <Link href="/bookings">
+                    <CalendarIcon size={18} className="mr-2" />
+                    Agendamentos
+                  </Link>
+                </Button>
               )}
-                </div>
+            </div>
           </SheetContent>
         </Sheet>
       </CardContent>
