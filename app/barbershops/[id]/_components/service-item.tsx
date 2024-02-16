@@ -11,13 +11,6 @@ import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 import { generateDayTimeList } from "../_helpers/hours";
 import { addDays, format, setHours, setMinutes } from "date-fns";
-import { saveBooking } from "../_actions/save-booking";
-import { Loader2 } from "lucide-react";
-import { toast } from "sonner";
-import { useRouter } from "next/navigation";
-import { getDayBookings } from "../_actions/get-day-bookings";
-import BookingInfo from "@/app/_components/booking-info";
-
 
 interface ServiceItemProps {
   service: Service;
@@ -54,12 +47,12 @@ const ServiceItem = ({ service, isAuthenticated }: ServiceItemProps) => {
       const timeHour = Number(time.split(":")[0]);
       const timeMinutes = Number(time.split(":")[1]);
 
-      const booking = dayBookings.find((booking) => {
-        const bookingHour = booking.date.getHours();
-        const bookingMinutes = booking.date.getMinutes();
+      // const booking = dayBookings.find((booking) => {
+      // const bookingHour = booking.date.getHours();
+      //const bookingMinutes = booking.date.getMinutes();
 
-        return bookingHour === timeHour && bookingMinutes === timeMinutes;
-      });
+      // return bookingHour === timeHour && bookingMinutes === timeMinutes;
+      // });
 
 
 
@@ -153,16 +146,22 @@ const ServiceItem = ({ service, isAuthenticated }: ServiceItemProps) => {
 
                         <div className="py-6 px-5 border-t border-solid border-secondary">
                           <Card>
-                            <CardContent>
+                            <CardContent className="p-3">
                               <div className="flex justify-between">
                                 <h2 className="font-bold">{service.name}</h2>
-                                <h3 className="font-bold text-sm"> 
-                                {" "}
-                                {Intl NumberFomat("pt-BR", {
-                                  style: "currency",
-                                  currency: "BRL",
-                                  }).format(Number(service.price))}</h3>
+                                <h3 className="font-bold text-sm">
+                                  {" "}
+                                  {Intl.NumberFormat("pt-BR", {
+                                    style: "currency",
+                                    currency: "BRL",
+                                  }).format(Number(service.price))}
+                                </h3>
                               </div>
+                              {date && (
+                                <div className="flex justify-between">
+                                  <h3 className="text-gray-400">Data</h3>                              </div>
+                                  
+                              )}
                             </CardContent>
                           </Card>
                         </div>
@@ -175,7 +174,7 @@ const ServiceItem = ({ service, isAuthenticated }: ServiceItemProps) => {
             </div>
           </CardContent>
         </Card>
-      )
-    };
+      );
+    }
 
     export default ServiceItem;
