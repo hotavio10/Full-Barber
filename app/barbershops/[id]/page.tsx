@@ -3,7 +3,7 @@ import { db } from "@/app/_lib/prisma";
 import { useRouter } from "next/router";
 import { RouterContext } from "next/dist/shared/lib/router-context.shared-runtime";
 import BarbershopInfo from "./_components/barbershop-info";
-import ServiceItem from "./_components/service-item";
+import ServiceItem from "./_components/service-item"
 import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 

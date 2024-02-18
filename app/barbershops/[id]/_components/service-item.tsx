@@ -159,8 +159,13 @@ const ServiceItem = ({ service, isAuthenticated }: ServiceItemProps) => {
                               </div>
                               {date && (
                                 <div className="flex justify-between">
-                                  <h3 className="text-gray-400">Data</h3>                              </div>
-                                  
+                                  <h3 className="text-gray-400 text-sm">Data</h3>
+                                  <h4 className="text-sm  ">
+                                    {format(date, "dd 'de' MMMM", {
+                                      locale: ptBR,
+                                    })}</h4>
+                                </div>
+
                               )}
                             </CardContent>
                           </Card>
@@ -175,6 +180,8 @@ const ServiceItem = ({ service, isAuthenticated }: ServiceItemProps) => {
           </CardContent>
         </Card>
       );
-    }
+    },
+  )},
 
-    export default ServiceItem;
+
+    export default ServiceItem; 
