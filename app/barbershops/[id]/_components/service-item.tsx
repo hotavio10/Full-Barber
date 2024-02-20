@@ -48,13 +48,11 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
       const timeHour = Number(time.split(":")[0]);
       const timeMinutes = Number(time.split(":")[1]);
 
-      // const booking = dayBookings.find((booking) => {
-      // const bookingHour = booking.date.getHours();
-      //const bookingMinutes = booking.date.getMinutes();
 
-      // return bookingHour === timeHour && bookingMinutes === timeMinutes;
-      // 
-    });
+      });
+
+    }, [date, ]);
+  
 
     return (
       <Card>
@@ -140,13 +138,13 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                             >
                               {time}
                             </Button>
-                          ))
-                        </div>
+                          ))}
+                          </div>
                       )}
 
                       <div className="py-6 px-5 border-t border-solid border-secondary">
                         <Card>
-                          <CardContent className="p-3">
+                          <CardContent className="p-3 gap-3 flex flex-col">
                             <div className="flex justify-between">
                               <h2 className="font-bold">{service.name}</h2>
                               <h3 className="font-bold text-sm">
@@ -195,5 +193,5 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
       </Card>
     )
   }
-}
+
 export default ServiceItem; 

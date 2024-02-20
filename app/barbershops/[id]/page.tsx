@@ -7,6 +7,7 @@ import { getServerSession } from "next-auth";
 import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import ServiceItem from "./_components/service-item";
 
+
 interface BarbershopDetailsPageProps {
   params: {
     id?: string;
