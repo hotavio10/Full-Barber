@@ -40,18 +40,9 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
   };
 
   const timeList = useMemo(() => {
-    if (!date) {
-      return [];
-    }
+   return date ? generateDayTimeList(date) : [];
+  }, [date]);
 
-    return generateDayTimeList(date).filter((time) => {
-      const timeHour = Number(time.split(":")[0]);
-      const timeMinutes = Number(time.split(":")[1]);
-
-
-      });
-
-    }, [date, ]);
   
 
     return (
