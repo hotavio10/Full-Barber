@@ -1,5 +1,6 @@
 "use client";
 
+
 import { Button } from "@/app/_components/ui/button";
 import { Calendar } from "@/app/_components/ui/calendar";
 import { Card, CardContent } from "@/app/_components/ui/card";
@@ -26,6 +27,7 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
   const [date, setDate] = useState<Date | undefined>(undefined);
   const [hour, setHour] = useState<string | undefined>();
   const [submitIsLoading, setSubmitIsLoading] = useState(false);
+  const [sheetIsOpen, setSheetIsOpen] = useState(false)
 
   const handleDateClick = (date: Date | undefined) => {
     setDate(date);
@@ -60,6 +62,8 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
         date: newDate,
         userId: (data.user as any).id
       });
+
+      setSheetIsOpen(false);
     } catch (error) {
       console.error(error);
     } finally {
@@ -98,7 +102,7 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
                   currency: "BRL",
                 }).format(Number(service.price))}
               </p>
-              <Sheet>
+              <Sheet open={sheetIsOpen} onOpenChange={setSheetIsOpen}>
                 <SheetTrigger asChild>
                   <Button variant="secondary" onClick={handleBookingClick}>
                     Reservar
