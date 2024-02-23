@@ -14,6 +14,7 @@ import { generateDayTimeList } from "../_helpers/hours";
 import { addDays, format, setHours, setMinutes } from "date-fns";
 import { saveBooking } from "../_actions/save-booking";
 import { Loader2 } from "lucide-react";
+import { toast } from "sonner";
 
 interface ServiceItemProps {
   barbershop: Barbershop;
@@ -64,6 +65,15 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
       });
 
       setSheetIsOpen(false);
+      toast("Reserva realizada com sucesso!",{
+        description: format(newDate, "'Para' dd 'de' MMMM 'às' HH':'mm'.'", {
+          locale: ptBR,
+        }),
+        action: {
+          label: "Visualizar",
+          onClick: () => console.log("Undo")
+        },
+      })
     } catch (error) {
       console.error(error);
     } finally {
