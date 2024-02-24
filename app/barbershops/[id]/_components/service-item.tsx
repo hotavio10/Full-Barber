@@ -15,6 +15,7 @@ import { addDays, format, setHours, setMinutes } from "date-fns";
 import { saveBooking } from "../_actions/save-booking";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
+import { useRouter } from "next/navigation";
 
 interface ServiceItemProps {
   barbershop: Barbershop;
@@ -23,6 +24,8 @@ interface ServiceItemProps {
 }
 
 const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps) => {
+  const router = useRouter();
+
   const { data } = useSession();
 
   const [date, setDate] = useState<Date | undefined>(undefined);
@@ -65,13 +68,15 @@ const ServiceItem = ({ service, barbershop, isAuthenticated }: ServiceItemProps)
       });
 
       setSheetIsOpen(false);
+      setHour(undefined);
+      setDate(undefined);
       toast("Reserva realizada com sucesso!",{
         description: format(newDate, "'Para' dd 'de' MMMM 'às' HH':'mm'.'", {
           locale: ptBR,
         }),
         action: {
           label: "Visualizar",
-          onClick: () => console.log("Undo")
+          onClick: () => router.push("/bookings"),
         },
       })
     } catch (error) {
